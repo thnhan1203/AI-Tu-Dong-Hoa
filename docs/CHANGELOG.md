@@ -128,3 +128,9 @@
 - Progressive max-width: card 1=100%, 2=94%, 3=88%, 4=82%
 - Margin auto centers each card
 - Previous card peeks out behind when stacked
+
+### 2026-06-24 · Services card redesign — `5b8a3d2`
+- Title line 2 stays dim (45% opacity, no scroll animation)
+- Card reveal: scale(0.95) → scale(1), translateY(40px) → 0
+- transform-origin: center top
+- 3D Visualization body matches original text
