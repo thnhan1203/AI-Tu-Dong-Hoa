@@ -1,4 +1,6 @@
-// Services component — 4 stacked dark cards
+// Services component — 4 stacked dark cards with scroll reveal animation
+
+const STAR_SVG = `<svg width="100%" viewBox="0 0 44 44" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.6094 43.9991V22.582" stroke-width="2"></path><path d="M4.75391 35.8655L19.8966 20.7207" stroke-width="2"></path><path d="M0 19.6074H21.4171" stroke-width="2"></path><path d="M8.13672 4.75195L23.2815 19.8946" stroke-width="2"></path><path d="M24.3906 0V21.4171" stroke-width="2"></path><path d="M39.2481 8.13477L24.1055 23.2795" stroke-width="2"></path><path d="M43.9991 24.3926H22.582" stroke-width="2"></path><path d="M35.8635 39.2481L20.7188 24.1055" stroke-width="2"></path></svg>`;
 
 const SERVICES = [
   {
@@ -9,7 +11,7 @@ const SERVICES = [
   {
     title: ['Smart', 'Development'],
     tags: ['Web Development', 'App Development', 'UI/UX Design', 'Interactions', 'CMS'],
-    body: 'Our team will work closely with you to create a digital product that meets your business goals and exceeds your expectations.',
+    body: 'Our team will work closely with you, taking the time to understand your vision and feedback in order to bring your ideas to life. We’ll provide regular updates and ensure that the final product surpasses your expectations.',
   },
   {
     title: ['Marketing', 'Campaigns'],
@@ -33,17 +35,40 @@ class SohubServices extends HTMLElement {
         </p>
         <div class="service-stack">
           ${SERVICES.map((s, i) => `
-            <article class="service-card service-card--${i + 1}">
-              <h3>${s.title[0]} <br>${s.title[1]}</h3>
+            <article class="service-card service-card--${i + 1}" data-service-card>
+              <h3 class="service-title">
+                <span class="service-title-line">${s.title[0]}</span>
+                <span class="service-title-line service-title-line--dim">${s.title[1]}</span>
+              </h3>
               <ul class="service-tags">
                 ${s.tags.map(t => `<li>${t}</li>`).join('')}
               </ul>
-              <p>${s.body}</p>
+              <div class="service-body">
+                <span class="service-star" aria-hidden="true">${STAR_SVG}</span>
+                <p>${s.body}</p>
+              </div>
             </article>
           `).join('')}
         </div>
       </section>
     `;
+    this._setupReveal();
+  }
+
+  _setupReveal() {
+    const cards = this.querySelectorAll('[data-service-card]');
+    if (!cards.length || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(c => observer.observe(c));
   }
 }
 

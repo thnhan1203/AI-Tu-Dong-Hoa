@@ -224,28 +224,85 @@ sohub-header.is-scrolled .logo {
   justify-content: space-between;
   color: var(--text-on-dark);
   /* ponytail: 4 stacked cards with progressive dark shades matching original */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.22,.68,0,1.2);
+}
+.service-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .service-card--1 { background: var(--svc-1); }
 .service-card--2 { background: var(--svc-2); }
 .service-card--3 { background: var(--svc-3); }
 .service-card--4 { background: var(--svc-4); }
 
-.service-card h3 {
-  font-size: clamp(40px, 5vw, 64px);
+.service-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-size: clamp(48px, 7vw, 96px);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   color: var(--text-on-dark);
-  letter-spacing: -0.02em;
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
+.service-title-line {
+  display: block;
+  color: var(--text-on-dark);
+  transition: color 0.6s ease;
+}
+.service-title-line--dim {
+  color: var(--text-on-dark-secondary);
+  opacity: 0.5;
+}
+.service-card.is-visible .service-title-line--dim {
+  color: var(--text-on-dark);
+  opacity: 1;
+}
+
 .service-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 24px;
-  font-size: 16px;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.service-tags li {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  font-size: 14px;
   font-weight: 400;
-  color: var(--text-on-dark-secondary);
-  margin-bottom: 24px;
+  color: var(--text-on-dark);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.service-tags li:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.service-body {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.service-star {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  color: var(--text-on-dark);
+  transform-origin: center;
+  animation: star-spin 16s linear infinite;
+  margin-top: 4px;
+}
+@keyframes star-spin {
+  to { transform: rotate(360deg); }
 }
 .service-card p {
   max-width: 700px;
