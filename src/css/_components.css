@@ -215,7 +215,8 @@ sohub-header.is-scrolled .logo {
 
 /* === SERVICE CARD === */
 .service-card {
-  position: relative;
+  position: sticky;
+  top: 100px;
   border-radius: 48px;
   padding: 64px;
   min-height: 600px;
@@ -223,10 +224,10 @@ sohub-header.is-scrolled .logo {
   flex-direction: column;
   justify-content: space-between;
   color: var(--text-on-dark);
-  /* ponytail: 4 stacked cards with progressive dark shades matching original */
+  /* ponytail: sticky stack — cards overlap on scroll, faster reveal */
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.22,.68,0,1.2);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.22,.68,0,1.2);
 }
 .service-card.is-visible {
   opacity: 1;
@@ -251,7 +252,7 @@ sohub-header.is-scrolled .logo {
 .service-title-line {
   display: block;
   color: var(--text-on-dark);
-  transition: color 0.6s ease;
+  transition: color 0.3s ease;
 }
 .service-title-line--dim {
   color: var(--text-on-dark-secondary);
