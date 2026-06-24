@@ -123,3 +123,8 @@
 - `.service-card` `position: sticky; top: 100px` — cards overlap on scroll
 - Card slide-up: 0.8s → 0.35s
 - Title color reveal: 0.6s → 0.3s
+
+### 2026-06-24 · Services card shrink — `4a9f7c8`
+- Progressive max-width: card 1=100%, 2=94%, 3=88%, 4=82%
+- Margin auto centers each card
+- Previous card peeks out behind when stacked
