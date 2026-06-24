@@ -68,3 +68,15 @@
 - [ ] Lighthouse score check (manual)
 - [ ] Real social handles (LinkedIn, Instagram, X) — currently point to platform homepages
 - [ ] Mobile menu animation polish (currently uses `transform`, no smooth ease)
+
+### 2026-06-24 · Header accurate to sohub.digital — `dc98859` (branch: `feature/header-accurate`)
+- **Layout**: fixed header, transparent bg, padding 40px 48px
+- **Logo**: large bold "sohub" (~36-40px, weight 700)
+- **Right cluster** (always visible):
+  - CHAT pill: light gray (#D9E0E3), with chat icon
+  - MENU/CLOSE pill: dark (#0C1016), with hamburger+dot icon
+- **Slide-down nav panel** (when MENU open):
+  - 4 items: Home, Studio, Work, Contact (48px font, weight 600, letter-spacing -3.6px)
+  - Padding 16px 24px, border-radius 16px on hover
+- **Removed**: old horizontal nav pattern (3 items), slide animation (text swap simpler)
+- **Branch**: `feature/header-accurate` — pending user review + squash merge
