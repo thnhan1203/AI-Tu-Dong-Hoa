@@ -111,3 +111,10 @@
 - Threshold 100px → `is-scrolled` class added
 - `.logo` fades out + slides left when scrolled
 - disconnectedCallback cleanup on component remove
+
+### 2026-06-24 · Services scroll reveal + star + pill tags — `7e9a4f1`
+- Cards slide up + fade in (IntersectionObserver, threshold 0.2)
+- Title: 2 lines, line 2 starts at 50% opacity, animates to full white
+- Tags: pill style (rounded, semi-transparent border)
+- Body: 8-point star icon + text in grid layout
+- Star spins continuously (16s rotation, linear, infinite)
