@@ -10,6 +10,10 @@
 # Verification artifacts
 .playwright-mcp/
 *.tmp.png
+v2-*.png
+
+# Research notes (local-only, bulky)
+.research/
 
 # Editor
 .vscode/
