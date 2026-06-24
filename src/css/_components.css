@@ -30,12 +30,17 @@
 
 /* === NAV (header) === */
 .logo {
-  font-size: clamp(28px, 3vw, 40px);
-  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  height: clamp(28px, 3vw, 40px);
   color: var(--text-primary);
-  letter-spacing: -0.04em;
-  line-height: 1;
   text-decoration: none;
+  transition: color 0.2s ease;
+}
+.logo svg {
+  height: 100%;
+  width: auto;
+  display: block;
 }
 .logo:hover { color: var(--text-secondary); }
 
