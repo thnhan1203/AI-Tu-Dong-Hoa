@@ -6,6 +6,7 @@
 
 # Claude per-project (local permissions, not for repo)
 .claude/settings.local.json
+.claude/
 
 # Verification artifacts
 .playwright-mcp/
