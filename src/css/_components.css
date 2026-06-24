@@ -66,11 +66,19 @@
   transition: background 0.2s ease, transform 0.4s cubic-bezier(.22,.68,0,1.2);
   will-change: transform;
 }
-.header-cta:hover { background: #C9D1D6; }
+.header-cta:hover {
+  background: #C9D1D6;
+  transform: scale(1.04);
+}
+.header-cta:hover .header-cta-text {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
 .header-cta:active { transform: scale(0.97); }
 .header-cta-text {
   padding: 0 16px 0 24px;
   letter-spacing: 0.01em;
+  transition: font-weight 0.2s ease, letter-spacing 0.2s ease;
 }
 .header-cta-icon {
   display: grid;
@@ -102,7 +110,14 @@
   transition: background 0.2s ease, transform 0.4s cubic-bezier(.22,.68,0,1.2);
   will-change: transform;
 }
-.menu-toggle:hover { background: var(--cta-primary-hover); }
+.menu-toggle:hover {
+  background: var(--cta-primary-hover);
+  transform: scale(1.04);
+}
+.menu-toggle:hover .menu-toggle-text {
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
 .menu-toggle:active { transform: scale(0.97); }
 
 .menu-toggle-text {
@@ -111,6 +126,7 @@
   padding: 0 24px 0 32px;
   text-align: left;
   line-height: 1;
+  transition: font-weight 0.2s ease, letter-spacing 0.2s ease;
 }
 
 .menu-toggle-icon {
