@@ -100,3 +100,8 @@
 ### 2026-06-24 · Hero float animation — `9c4a7b1`
 - `.hero-render` bobs up/down: 4s cycle, ease-in-out, ±24px
 - Position refactored: `top: 50%; translateY(-50%)` → `top: 0; bottom: 0; margin: auto 0`
+
+### 2026-06-24 · Nav panel slide-in card — `3a8f1c2`
+- Slide-from-right animation (translateX 120% → 0) replaces slide-down
+- Card: white bg, 32px radius, box-shadow, fixed top-right
+- Mobile: full-width with 24px margins
