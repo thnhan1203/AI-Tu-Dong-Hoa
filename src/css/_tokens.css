@@ -1,0 +1,62 @@
+/* Design tokens — colors, type scale, spacing, radii */
+
+@font-face {
+  font-family: 'publicaPlay';
+  src: url('../assets/fonts/PublicaPlay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Surface colors */
+  --bg-primary: #F0F6F8;
+  --bg-alternate: #FFFFFF;
+  --bg-dark: #11181C;
+
+  /* Text */
+  --text-primary: #11181C;
+  --text-secondary: #555555;
+  --text-tertiary: #A5ABAD;
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-secondary: #A5ABAD;
+
+  /* Borders & interactive */
+  --border: #D9E0E3;
+  --interactive: #000000;
+
+  /* CTA */
+  --cta-primary-bg: #0C1016;
+  --cta-primary-text: #FFFFFF;
+  --cta-primary-hover: #1E242C;
+
+  /* Service card surfaces (progressive) */
+  --svc-1: #0C1016;
+  --svc-2: #23272D;
+  --svc-3: #3A3E44;
+  --svc-4: #50555A;
+
+  /* Layout */
+  --max-w: 1440px;
+  --pad-x-mobile: 24px;
+  --pad-x-tablet: 32px;
+  --pad-x-desktop: 80px;
+  --section-y-mobile: 32px;
+  --section-y-tablet: 56px;
+  --section-y-desktop: 80px;
+
+  /* Type scale */
+  --font-family: 'Inter', ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --fs-display-hero: 56px;
+  --fs-display-cta: 144px;
+  --fs-intro: 72px;
+  --fs-section-label: 20px;
+  --fs-body: 16px;
+  --fs-emphasis: 18px;
+  --fs-work-label: 36px;
+  --fs-h2: 20px;
+
+  /* Radii */
+  --radius-image: 16px;
+  --radius-pill: 3356px;
+}
