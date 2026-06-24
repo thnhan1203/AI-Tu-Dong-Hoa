@@ -105,3 +105,9 @@
 - Slide-from-right animation (translateX 120% → 0) replaces slide-down
 - Card: white bg, 32px radius, box-shadow, fixed top-right
 - Mobile: full-width with 24px margins
+
+### 2026-06-24 · Hide logo on scroll — `4c1d2a7`
+- Scroll listener (rAF-throttled) on `sohub-header`
+- Threshold 100px → `is-scrolled` class added
+- `.logo` fades out + slides left when scrolled
+- disconnectedCallback cleanup on component remove
