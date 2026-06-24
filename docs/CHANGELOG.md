@@ -84,3 +84,9 @@
 ### 2026-06-24 · Logo SVG wordmark — `55d6dc9` (squashed into main)
 - Replaced text "sohub" with the actual SOHub wordmark SVG (5 vector paths)
 - Logo uses `currentColor` for theming
+
+### 2026-06-24 · Header buttons hover effect — `5b7e4a3`
+- **CHAT pill**: hover → scale 1.04, text weight 600, letter-spacing +0.01em, bg #C9D1D6
+- **MENU pill**: hover → scale 1.04, text weight 700, letter-spacing +0.02em, bg --cta-primary-hover
+- **Transition**: 0.2s ease for font-weight + letter-spacing (variable Inter font)
+- **Active** (press): scale 0.97 (preserved from previous)
