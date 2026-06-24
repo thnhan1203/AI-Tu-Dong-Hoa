@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# OMC runtime state (sessions, plans, logs, handoffs)
+.omc/
+
+# Claude per-project (local permissions, not for repo)
+.claude/settings.local.json
+
+# Verification artifacts
+.playwright-mcp/
+*.tmp.png
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
