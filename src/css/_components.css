@@ -233,10 +233,10 @@ sohub-header.is-scrolled .logo {
   opacity: 1;
   transform: translateY(0);
 }
-.service-card--1 { background: var(--svc-1); }
-.service-card--2 { background: var(--svc-2); }
-.service-card--3 { background: var(--svc-3); }
-.service-card--4 { background: var(--svc-4); }
+.service-card--1 { background: var(--svc-1); max-width: 100%; }
+.service-card--2 { background: var(--svc-2); max-width: 94%; margin-left: auto; margin-right: auto; }
+.service-card--3 { background: var(--svc-3); max-width: 88%; margin-left: auto; margin-right: auto; }
+.service-card--4 { background: var(--svc-4); max-width: 82%; margin-left: auto; margin-right: auto; }
 
 .service-title {
   display: flex;
