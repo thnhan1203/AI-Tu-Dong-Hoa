@@ -35,7 +35,12 @@
   height: clamp(28px, 3vw, 40px);
   color: var(--text-primary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+sohub-header.is-scrolled .logo {
+  opacity: 0;
+  transform: translateX(-16px);
+  pointer-events: none;
 }
 .logo svg {
   height: 100%;

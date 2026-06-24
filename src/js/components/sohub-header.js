@@ -48,6 +48,25 @@ class SohubHeader extends HTMLElement {
       </header>
     `;
     this._setupMenu();
+    this._setupScroll();
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('scroll', this._onScroll);
+  }
+
+  _setupScroll() {
+    let ticking = false;
+    this._onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          this.classList.toggle('is-scrolled', window.scrollY > 100);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
   }
 
   _setupMenu() {
