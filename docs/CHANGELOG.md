@@ -80,3 +80,7 @@
   - Padding 16px 24px, border-radius 16px on hover
 - **Removed**: old horizontal nav pattern (3 items), slide animation (text swap simpler)
 - **Branch**: `feature/header-accurate` — pending user review + squash merge
+
+### 2026-06-24 · Logo SVG wordmark — `55d6dc9` (squashed into main)
+- Replaced text "sohub" with the actual SOHub wordmark SVG (5 vector paths)
+- Logo uses `currentColor` for theming
