@@ -1,25 +1,22 @@
 /* Page sections — header, hero, work, services, cta, footer, responsive */
 
-/* === HEADER === */
+/* === HEADER (structural — styles in _components.css) === */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  background: var(--bg-primary);
-  border-bottom: 1px solid var(--border);
+  background: transparent;
+  padding: 40px 48px 0;
+  /* ponytail: fixed (not sticky), no bg — original has transparent header over hero */
 }
 .header-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 16px var(--pad-x-desktop);
   display: flex;
   align-items: center;
-  gap: 24px;
-}
-.logo {
-  font-size: var(--fs-body);
-  font-weight: 400;
-  color: var(--text-primary);
+  justify-content: space-between;
+  max-width: var(--max-w);
+  margin: 0 auto;
 }
 
 /* === HERO === */
@@ -294,18 +291,9 @@
     --section-y-desktop: var(--section-y-mobile);
     --pad-x-desktop: var(--pad-x-mobile);
   }
-  .nav-toggle { display: inline-flex; }
-  .site-nav, .header-cta { display: none; }
-  .site-nav.open {
-    display: flex;
-    position: fixed;
-    inset: 64px 0 0 0;
-    background: var(--bg-primary);
-    flex-direction: column;
-    padding: 32px var(--pad-x-mobile);
-    gap: 24px;
-    z-index: 99;
-  }
+  .site-header { padding: 24px var(--pad-x-mobile) 0; }
+  .header-cta-text { padding: 0 12px 0 16px; }
+  .nav-link { padding: 8px 16px; }
   .work-grid { grid-template-columns: 1fr; gap: 16px; }
   .cta-final { grid-template-columns: 1fr; gap: 32px; min-height: auto; }
   .cta-render { position: relative; right: auto; width: 100%; max-width: 400px; margin: 0 auto; }
