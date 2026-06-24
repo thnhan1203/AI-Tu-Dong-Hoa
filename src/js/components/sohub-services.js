@@ -21,7 +21,7 @@ const SERVICES = [
   {
     title: ['3D', 'Visualization'],
     tags: ['Architecture', 'Engineering', 'Construction', 'Interior Design', 'Product Design'],
-    body: 'Our company specializes in 3D visualization services that bring your ideas to life with stunning realism and accuracy.',
+    body: 'Our company specializes in envisioning images and animations of architectural and engineering projects. We use the latest software to create stunning visuals that portray astonishing photorealistic end products.',
   },
 ];
 

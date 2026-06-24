@@ -224,14 +224,15 @@ sohub-header.is-scrolled .logo {
   flex-direction: column;
   justify-content: space-between;
   color: var(--text-on-dark);
-  /* ponytail: sticky stack — cards overlap on scroll, faster reveal */
+  transform-origin: center top;
+  /* ponytail: sticky stack + progressive scale — later cards smaller, peek-through */
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(.22,.68,0,1.2);
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.35s ease, transform 0.5s cubic-bezier(.22,.68,0,1.2);
 }
 .service-card.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 .service-card--1 { background: var(--svc-1); max-width: 100%; }
 .service-card--2 { background: var(--svc-2); max-width: 94%; margin-left: auto; margin-right: auto; }
@@ -252,15 +253,10 @@ sohub-header.is-scrolled .logo {
 .service-title-line {
   display: block;
   color: var(--text-on-dark);
-  transition: color 0.3s ease;
 }
 .service-title-line--dim {
   color: var(--text-on-dark-secondary);
-  opacity: 0.5;
-}
-.service-card.is-visible .service-title-line--dim {
-  color: var(--text-on-dark);
-  opacity: 1;
+  opacity: 0.45;
 }
 
 .service-tags {
