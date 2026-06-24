@@ -118,3 +118,8 @@
 - Tags: pill style (rounded, semi-transparent border)
 - Body: 8-point star icon + text in grid layout
 - Star spins continuously (16s rotation, linear, infinite)
+
+### 2026-06-24 · Services sticky stack + faster animations — `a3d2e1f`
+- `.service-card` `position: sticky; top: 100px` — cards overlap on scroll
+- Card slide-up: 0.8s → 0.35s
+- Title color reveal: 0.6s → 0.3s
