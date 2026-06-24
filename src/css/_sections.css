@@ -55,12 +55,18 @@
 .hero-render {
   position: absolute;
   right: 5%;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
   width: clamp(220px, 28vw, 480px);
   height: auto;
   z-index: 2;
   pointer-events: none;
+  animation: hero-float 4s ease-in-out infinite;
+}
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-24px); }
 }
 .hero-tagline {
   position: relative;
