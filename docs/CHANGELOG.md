@@ -96,3 +96,7 @@
 - **`.hero-render`**: 3D render overlaps right side of display (was corner)
 - **`.hero-tagline`**: 56px → clamp(20px, 2.4vw, 36px), lighter weight
 - **`.scroll-indicator`**: bottom-center → bottom-left
+
+### 2026-06-24 · Hero float animation — `9c4a7b1`
+- `.hero-render` bobs up/down: 4s cycle, ease-in-out, ±24px
+- Position refactored: `top: 50%; translateY(-50%)` → `top: 0; bottom: 0; margin: auto 0`
