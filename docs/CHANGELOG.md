@@ -90,3 +90,9 @@
 - **MENU pill**: hover → scale 1.04, text weight 700, letter-spacing +0.02em, bg --cta-primary-hover
 - **Transition**: 0.2s ease for font-weight + letter-spacing (variable Inter font)
 - **Active** (press): scale 0.97 (preserved from previous)
+
+### 2026-06-24 · Hero restructure — `e1f7a82`
+- **`.hero-display`**: large SOHub wordmark SVG (~280px tall, full container width)
+- **`.hero-render`**: 3D render overlaps right side of display (was corner)
+- **`.hero-tagline`**: 56px → clamp(20px, 2.4vw, 36px), lighter weight
+- **`.scroll-indicator`**: bottom-center → bottom-left
