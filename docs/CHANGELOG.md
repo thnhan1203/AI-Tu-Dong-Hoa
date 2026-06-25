@@ -155,3 +155,11 @@
 ### 2026-06-25 · Services 80% width — `9b1c3d7`
 - Inactive card width: 70% → 80%
 - Active 100%, inactive 80% (20% peek)
+
+---
+
+## v1.0.0 — Initial release (`v1.0.0` tag)
+- First stable release of sohub.digital landing page clone
+- All features implemented (header, hero, work, services, CTA, footer)
+- Static HTML/CSS/JS, no build step, no dependencies
+- VERSION file added at project root
