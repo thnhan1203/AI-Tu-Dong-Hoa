@@ -134,3 +134,8 @@
 - Card reveal: scale(0.95) → scale(1), translateY(40px) → 0
 - transform-origin: center top
 - 3D Visualization body matches original text
+
+### 2026-06-25 · Services deck-of-cards — `e4f2a9b`
+- transform-origin: center bottom (cards anchor to bottom)
+- Progressive scale: 1, 0.7, 0.49, 0.34 (--final-scale)
+- Each card peeks ~30% above the next (70% overlap)
