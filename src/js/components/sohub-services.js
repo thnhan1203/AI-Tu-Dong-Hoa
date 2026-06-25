@@ -53,6 +53,35 @@ class SohubServices extends HTMLElement {
       </section>
     `;
     this._setupReveal();
+    this._setupActiveCard();
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener('scroll', this._onActiveScroll);
+  }
+
+  _setupActiveCard() {
+    const cards = Array.from(this.querySelectorAll('[data-service-card]'));
+    const section = this.querySelector('.services');
+    if (!cards.length || !section) return;
+
+    let ticking = false;
+    this._onActiveScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const rect = section.getBoundingClientRect();
+          const sectionTop = rect.top + window.scrollY;
+          const scrollProgress = window.scrollY + 100 - sectionTop;
+          const step = 600;
+          const activeIndex = Math.min(cards.length - 1, Math.max(0, Math.floor(scrollProgress / step)));
+          cards.forEach((c, i) => c.classList.toggle('is-active', i === activeIndex));
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', this._onActiveScroll, { passive: true });
+    this._onActiveScroll();
   }
 
   _setupReveal() {
