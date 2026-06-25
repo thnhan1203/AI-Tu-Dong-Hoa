@@ -307,6 +307,62 @@ sohub-contact-modal.is-open .contact-modal-card {
   height: 21px;
 }
 
+.contact-action-spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: var(--text-on-dark);
+  animation: contact-spin 0.7s linear infinite;
+}
+
+.contact-modal-card[data-state="loading"] .contact-action-label,
+.contact-modal-card[data-state="loading"] .contact-action-icon {
+  display: none;
+}
+
+.contact-modal-card[data-state="loading"] .contact-action-spinner {
+  display: inline-block;
+}
+
+.contact-modal-card[data-state="success"] .contact-action-label {
+  display: none;
+}
+
+.contact-modal-card[data-state="loading"] .contact-action,
+.contact-modal-card[data-state="success"] .contact-action {
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.contact-modal-card[data-state="error"] .contact-action--submit {
+  background: #FF0A66;
+}
+
+@keyframes contact-spin {
+  to { transform: rotate(360deg); }
+}
+
+.contact-modal-status {
+  width: min(100%, 560px);
+  margin: clamp(12px, 1.6vh, 18px) 0 0;
+  min-height: 1.4em;
+  text-align: center;
+  font-size: clamp(14px, 1.3vw, 18px);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-tertiary);
+}
+
+.contact-modal-card[data-state="success"] .contact-modal-status {
+  color: #1f7a4d;
+}
+
+.contact-modal-card[data-state="error"] .contact-modal-status {
+  color: #FF0A66;
+}
+
 @media (max-width: 767px) {
   .contact-modal {
     padding: 12px;

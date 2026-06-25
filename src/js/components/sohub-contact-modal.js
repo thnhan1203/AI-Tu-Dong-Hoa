@@ -1,4 +1,5 @@
 // Contact modal — shared form for chat/contact triggers
+// Submits JSON payload to window.SOHUB_CONFIG.sheetsEndpoint (Apps Script Web App).
 
 const ARROW_RIGHT_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>`;
 const ARROW_LEFT_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"></path><path d="m11 6-6 6 6 6"></path></svg>`;
@@ -8,7 +9,7 @@ class SohubContactModal extends HTMLElement {
     this.innerHTML = `
       <div class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title" aria-hidden="true">
         <div class="contact-modal-backdrop" data-contact-close></div>
-        <form class="contact-modal-card" novalidate>
+        <form class="contact-modal-card" novalidate data-state="idle">
           <p class="contact-modal-kicker">Join us</p>
           <h2 class="contact-modal-title" id="contact-modal-title">
             Since we're pals now, spill the beans<br>about yourself!
@@ -17,13 +18,13 @@ class SohubContactModal extends HTMLElement {
           <div class="contact-form-grid">
             <label class="contact-field" data-field="fullName">
               <span>Full Name</span>
-              <input name="fullName" type="text" autocomplete="name">
+              <input name="fullName" type="text" autocomplete="name" required>
               <small></small>
             </label>
 
             <label class="contact-field" data-field="email">
               <span>Email</span>
-              <input name="email" type="email" autocomplete="email">
+              <input name="email" type="email" autocomplete="email" required>
               <small></small>
             </label>
 
@@ -35,10 +36,12 @@ class SohubContactModal extends HTMLElement {
 
             <label class="contact-field contact-field--wide contact-field--message" data-field="application">
               <span>Application</span>
-              <textarea name="application"></textarea>
+              <textarea name="application" required></textarea>
               <small></small>
             </label>
           </div>
+
+          <p class="contact-modal-status" role="status" aria-live="polite"></p>
 
           <div class="contact-modal-actions">
             <button class="contact-action contact-action--back" type="button" data-contact-close>
@@ -46,7 +49,8 @@ class SohubContactModal extends HTMLElement {
               <span>Go back</span>
             </button>
             <button class="contact-action contact-action--submit" type="submit">
-              <span>Submit</span>
+              <span class="contact-action-label">Submit</span>
+              <span class="contact-action-spinner" aria-hidden="true"></span>
               <span class="contact-action-icon" aria-hidden="true">${ARROW_RIGHT_SVG}</span>
             </button>
           </div>
@@ -56,6 +60,8 @@ class SohubContactModal extends HTMLElement {
 
     this.modal = this.querySelector('.contact-modal');
     this.form = this.querySelector('.contact-modal-card');
+    this.status = this.querySelector('.contact-modal-status');
+    this.submitButton = this.querySelector('.contact-action--submit');
     this.previousFocus = null;
     this._setupEvents();
   }
@@ -65,6 +71,7 @@ class SohubContactModal extends HTMLElement {
     this.modal?.setAttribute('aria-hidden', 'false');
     this.classList.add('is-open');
     document.body.classList.add('contact-modal-open');
+    this._setState('idle');
     this.querySelector('input[name="fullName"]')?.focus();
   }
 
@@ -72,6 +79,9 @@ class SohubContactModal extends HTMLElement {
     this.modal?.setAttribute('aria-hidden', 'true');
     this.classList.remove('is-open');
     document.body.classList.remove('contact-modal-open');
+    this._setState('idle');
+    this.form?.reset();
+    this.querySelectorAll('.contact-field.has-error').forEach(f => f.classList.remove('has-error'));
     this.previousFocus?.focus?.();
   }
 
@@ -86,13 +96,62 @@ class SohubContactModal extends HTMLElement {
 
     this.form?.addEventListener('submit', (event) => {
       event.preventDefault();
-      if (this._validate()) this.close();
+      if (this._validate()) this._submit();
     });
 
     this.form?.addEventListener('input', (event) => {
       const field = event.target.closest('.contact-field');
       if (field?.classList.contains('has-error')) this._validateField(field);
     });
+  }
+
+  _setState(state) {
+    this.form?.setAttribute('data-state', state);
+    if (this.status) this.status.textContent = '';
+    if (this.submitButton) {
+      this.submitButton.disabled = state === 'loading' || state === 'success';
+    }
+  }
+
+  _collectPayload() {
+    const data = new FormData(this.form);
+    const payload = {};
+    for (const [key, value] of data.entries()) {
+      payload[key] = typeof value === 'string' ? value.trim() : value;
+    }
+    payload.submittedAt = new Date().toISOString();
+    return payload;
+  }
+
+  async _submit() {
+    const endpoint = window.SOHUB_CONFIG?.sheetsEndpoint?.trim();
+    if (!endpoint) {
+      this._showError('Submission is not configured yet. Set window.SOHUB_CONFIG.sheetsEndpoint in js/config.js.');
+      return;
+    }
+
+    this._setState('loading');
+    const payload = this._collectPayload();
+
+    try {
+      await fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      this._setState('success');
+      if (this.status) this.status.textContent = 'Thanks! We will get back to you soon.';
+      setTimeout(() => this.close(), 1600);
+    } catch (err) {
+      console.error('Contact form submit failed', err);
+      this._showError('Could not send your message. Please try again.');
+    }
+  }
+
+  _showError(message) {
+    this._setState('error');
+    if (this.status) this.status.textContent = message;
   }
 
   _validate() {
@@ -116,7 +175,7 @@ class SohubContactModal extends HTMLElement {
       error = 'Please provide a valid email address';
     }
 
-    if (name === 'portfolio' && !this._isValidUrl(value)) {
+    if (name === 'portfolio' && value && !this._isValidUrl(value)) {
       error = 'Please provide a valid portfolio link';
     }
 

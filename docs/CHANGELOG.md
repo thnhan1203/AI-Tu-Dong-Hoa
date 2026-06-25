@@ -156,6 +156,14 @@
 - Inactive card width: 70% → 80%
 - Active 100%, inactive 80% (20% peek)
 
+### 2026-06-25 · Contact form → Google Sheets — (pending)
+- `src/js/config.js` — runtime config with `sheetsEndpoint` (user replaces)
+- `src/index.html` — load `config.js` before `main.js`
+- `sohub-contact-modal.js` — POST JSON to endpoint, loading/success/error states, status message, form reset on close
+- `_components.css` — spinner animation + status text styles
+- `docs/google-sheets-setup.md` — step-by-step Apps Script + Sheet setup (sheet headers, `doPost` script, deploy as Web App, paste URL)
+- Portfolio field optional (skips URL check when empty)
+
 ---
 
 ## v1.0.0 — Initial release (`v1.0.0` tag)
