@@ -24,3 +24,6 @@ v2-*.png
 
 # Dependencies
 node_modules/
+
+# Vercel CLI project link
+.vercel/
