@@ -145,3 +145,9 @@
 - Active: width 100%; others: width 70%
 - Card 1: always 70%
 - Height unchanged; smooth width transition
+
+### 2026-06-25 · Services reverse z-index — `4d9a3b6`
+- Cards z-index 4/3/2/1 (card 1 highest)
+- Card 1 visible at services start at 100%
+- Active card: z-index 10 (overrides default)
+- Removed `!important` on card 1 width
