@@ -164,7 +164,7 @@
 - `docs/google-sheets-setup.md` — step-by-step Apps Script + Sheet setup (sheet headers, `doPost` script, deploy as Web App, paste URL)
 - Portfolio field optional (skips URL check when empty)
 
-### 2026-06-25 · Vercel deploy config — (pending)
+### 2026-06-25 · Vercel deploy config — `0126ad2`
 - `vercel.json` — outputDirectory `src`, cleanUrls, security headers, 1-year cache for `/assets/*`
 - `.gitignore` — exclude `.vercel/` (CLI project link)
 - `docs/vercel-deploy.md` — dashboard + CLI deploy walkthrough, custom domain, troubleshooting
