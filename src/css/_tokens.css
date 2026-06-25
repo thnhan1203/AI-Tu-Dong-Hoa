@@ -36,6 +36,14 @@
   --svc-3: #3A3E44;
   --svc-4: #50555A;
 
+  /* Service card deck parameters */
+  --svc-top-base: 80px;
+  --svc-top-offset: 32px;
+  --svc-stack-hold: calc(100vh - var(--svc-top-base) - var(--svc-top-offset) * 3);
+  --svc-w-stacked-1: calc(100% - 8%);
+  --svc-w-stacked-2: calc(100% - 15%);
+  --svc-w-stacked-3: calc(100% - 20%);
+
   /* Layout */
   --max-w: 1440px;
   --pad-x-mobile: 24px;

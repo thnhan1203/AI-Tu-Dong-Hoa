@@ -74,7 +74,22 @@ class SohubServices extends HTMLElement {
           const scrollProgress = window.scrollY + 100 - sectionTop;
           const step = 600;
           const activeIndex = Math.min(cards.length - 1, Math.max(0, Math.floor(scrollProgress / step)));
-          cards.forEach((c, i) => c.classList.toggle('is-active', i === activeIndex));
+          cards.forEach((c, i) => {
+            // Reset all stack classes first
+            c.classList.remove('is-active', 'is-stacked-1', 'is-stacked-2', 'is-stacked-3');
+            c.style.removeProperty('--svc-active-width');
+
+            if (i === activeIndex) {
+              const activeInset = i === cards.length - 1 ? 0 : Math.min(i * 4, 12);
+              c.style.setProperty('--svc-active-width', `calc(100% - ${activeInset}%)`);
+              c.classList.add('is-active');
+            } else if (i < activeIndex) {
+              const diff = activeIndex - i;
+              if (diff === 1) c.classList.add('is-stacked-1');
+              else if (diff === 2) c.classList.add('is-stacked-2');
+              else if (diff >= 3) c.classList.add('is-stacked-3');
+            }
+          });
           ticking = false;
         });
         ticking = true;

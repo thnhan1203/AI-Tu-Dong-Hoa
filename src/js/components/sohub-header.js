@@ -23,7 +23,7 @@ class SohubHeader extends HTMLElement {
             </svg>
           </a>
           <div class="header-actions">
-            <a href="#contact" class="header-cta">
+            <a href="#contact" class="header-cta" data-contact-modal>
               <span class="header-cta-text">CHAT WITH SOHUB</span>
               <span class="header-cta-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -42,7 +42,7 @@ class SohubHeader extends HTMLElement {
         </div>
         <nav class="nav-panel" id="nav-panel" aria-hidden="true">
           ${NAV_ITEMS.map(item => `
-            <a href="${item.href}" class="nav-link">${item.label}</a>
+            <a href="${item.href}" class="nav-link" ${item.href === '#contact' ? 'data-contact-modal' : ''}>${item.label}</a>
           `).join('')}
         </nav>
       </header>
