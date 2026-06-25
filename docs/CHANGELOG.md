@@ -139,3 +139,9 @@
 - transform-origin: center bottom (cards anchor to bottom)
 - Progressive scale: 1, 0.7, 0.49, 0.34 (--final-scale)
 - Each card peeks ~30% above the next (70% overlap)
+
+### 2026-06-25 · Services width toggle on scroll — `c4e8a1d`
+- JS scroll listener (rAF) tracks active card based on scroll position
+- Active: width 100%; others: width 70%
+- Card 1: always 70%
+- Height unchanged; smooth width transition
