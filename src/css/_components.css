@@ -234,11 +234,12 @@ sohub-header.is-scrolled .logo {
   width: 100%;
   margin-left: 0;
   margin-right: 0;
+  z-index: 10;
 }
-.service-card--1 { background: var(--svc-1); width: 70% !important; }
-.service-card--2 { background: var(--svc-2); }
-.service-card--3 { background: var(--svc-3); }
-.service-card--4 { background: var(--svc-4); }
+.service-card--1 { background: var(--svc-1); z-index: 4; }
+.service-card--2 { background: var(--svc-2); z-index: 3; }
+.service-card--3 { background: var(--svc-3); z-index: 2; }
+.service-card--4 { background: var(--svc-4); z-index: 1; }
 
 .service-title {
   display: flex;
