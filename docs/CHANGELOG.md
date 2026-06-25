@@ -151,3 +151,7 @@
 - Card 1 visible at services start at 100%
 - Active card: z-index 10 (overrides default)
 - Removed `!important` on card 1 width
+
+### 2026-06-25 · Services 80% width — `9b1c3d7`
+- Inactive card width: 70% → 80%
+- Active 100%, inactive 80% (20% peek)
