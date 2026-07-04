@@ -137,7 +137,7 @@ class SohubContactModal extends HTMLElement {
       await fetch(endpoint, {
         method: 'POST',
         mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
       this._setState('success');
