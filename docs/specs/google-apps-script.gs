@@ -1,19 +1,16 @@
-const SHEET_NAME = 'SOHub Leads';
+const SPREADSHEET_ID = '1Bah27H4QMAk4U4i7j4lQZBUrTJoWzhDJeSpcUOgTXdQ';
+const SHEET_NAME = 'Sheet1';
 const HEADERS = ['Timestamp', 'Full Name', 'Email', 'Portfolio', 'Application', 'Submitted At (ISO)'];
 
 function ensureSheetAndHeaders() {
-  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
   let sheet = spreadsheet.getSheetByName(SHEET_NAME);
 
   if (!sheet) {
-    sheet = spreadsheet.getSheets()[0] || spreadsheet.insertSheet(SHEET_NAME);
-    if (sheet.getName() !== SHEET_NAME) {
-      spreadsheet.renameActiveSheet(SHEET_NAME);
-      sheet = spreadsheet.getSheetByName(SHEET_NAME);
-    }
+    sheet = spreadsheet.insertSheet(SHEET_NAME);
   }
 
-  const existingHeaders = sheet.getRange(1, 1, 1, HEADERS.length).getValues()[0];
+  const existingHeaders = sheet.getRange(1, 1, 1, HEADERS.length).getDisplayValues()[0];
   const isEmpty = existingHeaders.every(value => (value || '').toString().trim() === '');
 
   if (isEmpty) {
@@ -34,8 +31,7 @@ function doPost(e) {
     try {
       const raw = e.postData.contents;
       if (raw) {
-        const parsed = JSON.parse(raw);
-        data = parsed;
+        data = JSON.parse(raw);
       }
     } catch (err) {
       data = e.parameter || {};
