@@ -32,18 +32,28 @@ function doPost(e) {
     let data = {};
 
     try {
-      data = JSON.parse(e.postData.contents);
+      const raw = e.postData.contents;
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        data = parsed;
+      }
     } catch (err) {
       data = e.parameter || {};
     }
 
+    const fullName = data.fullName || data.fullname || data.name || '';
+    const email = data.email || '';
+    const portfolio = data.portfolio || '';
+    const application = data.application || '';
+    const submittedAt = data.submittedAt || '';
+
     sheet.appendRow([
       new Date(),
-      data.fullName || data.fullname || '',
-      data.email || '',
-      data.portfolio || '',
-      data.application || '',
-      data.submittedAt || ''
+      fullName,
+      email,
+      portfolio,
+      application,
+      submittedAt
     ]);
 
     return ContentService
