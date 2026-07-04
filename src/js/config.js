@@ -3,5 +3,5 @@
 // following docs/google-sheets-setup.md.
 
 window.SOHUB_CONFIG = window.SOHUB_CONFIG || {
-  sheetsEndpoint: 'https://script.google.com/macros/s/AKfycbz6pvR-eXAS9DsiMJ1AzdSWYrzQg_1cL_6LuhQwCjk8OlJMUQLm50mg1fqnGKHXQ41LFA/exec'
+  sheetsEndpoint: 'https://script.google.com/macros/s/AKfycbzwEvteU38ZDzSST8DvprPa207CXzxIpYLUhD5D042S_yLdvwtqMDKZLtDZnudr5T13/exec'
 };
